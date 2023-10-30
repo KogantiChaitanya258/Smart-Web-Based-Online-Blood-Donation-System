@@ -1,0 +1,73 @@
+{% include 'myapp/base.html' %}
+{% block content %}
+<head>
+ {% load static %}
+  <link rel='stylesheet' href="{% static 'css/donor.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style >
+  .container h1{
+    background:#E31919;
+    color:white;
+
+  }
+  .container{
+    background:#F8EAEA;
+  }
+  .heading{
+      
+      color: white;
+      font-family:Garamond;
+      padding: 10px;
+      font-size: 25px;
+
+    }
+</style>
+</head>
+
+  <br><br>
+
+<form  method="POST" id="donor">
+  {% csrf_token %}
+  
+  <div class="container">
+    <h1 class="heading"><center>SEARCH FOR DONOR</center></h1>
+<label for="illness"><b>SEARCH CITY</label><br><br>
+<select name="search_city" form="donor">
+  <option value="Vijayawada">Vijayawada</option>
+  <option value="Guntur">Guntur</option>
+  <option value="Nellore">Nellore</option>
+  <option value="Vizag">Vizag</option>
+  <option value="Kurnool">Kurnool</option>
+  <option value="Tirupathi">Tirupathi</option>
+</select><br><br>
+
+<label ><b>Donor Type</label><br><br>
+<select name="donortype" form="donor">
+  <option value="Blood">Blood</option>
+  <option value="Plasma">Plasma</option>\
+  <option value="Both">Both Blood&Palsma</option>
+</select><br><br>
+
+<label for="illness"><b>SELECT BLOODGROUP</label><br><br>
+<select name="blood_group" >
+  <option value="O Positive">O+</option>
+  <option value="O Negative">O-</option>
+  <option value="A Positive">A+</option>
+  <option value="A Negative">A-</option>
+  <option value="B Positive">B+</option>
+  <option value="B Negative">B-</option>
+  <option value="AB Positive">AB+</option>
+  <option value="AB Negative">AB-</option>
+  <br>
+</select><br><br>
+
+
+    <button type="submit" class="registerbtn">CHECK AVAILABILITY</button>
+  </div>
+
+</form>
+
+{% endblock content %}

@@ -1,0 +1,105 @@
+{% include 'myapp/base.html' %}
+{% block content %}
+
+{%load static%}
+<head>
+    <style>
+        
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #FA5723;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+   .text-center{
+    color:white;
+    font-family:Garamond;
+
+   }
+   .container{
+    margin-left: -5px;
+   }
+   .emptydata{
+    color:white;
+   }
+    </style>
+
+   </head>
+<br><br>
+<div class="container">
+    <h4 class="text-center">REQUESTS</h4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col" bgcolor="28BA86">YourName</th>
+                <th scope="col" bgcolor="#DA4D21">Recievername</th>
+                <th scope="col" bgcolor="#DA4D21">Required_Service</th>
+                <th scope="col" bgcolor="#DA4D21">AcceptRequest</th>
+                <th scope="col" bgcolor="#DA4D21">DeleteRequest</th>
+                <th scope="col" bgcolor="#DA4D21">Status</th>
+
+
+                
+            </tr>
+        </thead>
+    {% if requestdata %}
+    {% for t in requestdata %}
+    {% if t.status in 'Pending,Rejected,Accepted' %}
+    
+    
+        
+        <tbody>
+          
+            <tr>
+                
+                <td>{{t.donorname}}</td>
+                <td><a href="{% url 'donorprofile' t.recievername %}" data-toggle="tooltip" title="ViewProfile" style='color:#5876E1;'><b>{{t.recievername}}</b></a></td>
+                <td>{{t.requiredservice}}</td>
+                <td><button><a href="{% url 'acceptreq' t.donorname t.recievername t.requiredservice %}" onclick="return confirm('Are you sure to Accept this request?') "style='color:limegreen;'><b>AcceptRequest</b></a></button></td>
+                <td><button><a href="{% url 'deletereq' t.donorname t.recievername t.requiredservice 'out' %}" onclick="return confirm('Are you sure to delete this request?')"style='color:orangered;'><b>RejectRequest</b></a></button></td>
+
+                <td style="color:black;">{{t.status}}</td>
+            
+               
+            </tr>
+            {% endif %}
+            <!--{% if t.status == 'Accepted' %}
+                
+        
+            <tbody>
+              
+                <tr>
+                    
+                    <td>{{t.donorname}}</td>
+                    <td><a href="{% url 'donorprofile' t.recievername %}" data-toggle="tooltip" title="ViewProfile" style='color:#5876E1;'><b>{{t.recievername}}</b></a></td>
+                    <td>{{t.requiredservice}}</td>
+                    <td><button><a href="{% url 'acceptreq' t.donorname t.recievername t.requiredservice %}" onclick="return confirm('Are you sure to Accept this request?') "style='color:limegreen;'><b>AcceptRequest</b></a></button></td>
+                    <td style="color:red;">****</td>
+                    <td style="color:green;">{{t.status}}</td>
+                   
+                
+                   
+
+
+                {% endif %}-->
+
+                {% endfor %}
+                {% else %}
+                <tr class="emptydata">NO REQUEST AVALABLE!!</tr>
+                {% endif %}
+
+
+        </tbody>
+    
+    </table>
+</div>
+
+
+{% endblock content %}
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+
+

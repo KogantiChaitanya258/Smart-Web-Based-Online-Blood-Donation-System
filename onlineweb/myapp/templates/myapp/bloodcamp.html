@@ -1,0 +1,106 @@
+{% include 'myapp/base.html' %}
+{% block content %}
+
+{%load static%}
+<head>
+    <style>
+        .label {
+     color: white;
+     padding: 8px;
+   }
+   
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #2196F3;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+   .text-center{
+    color:white;
+    font-family:Garamond;
+
+   }
+   .container{
+    margin-left: -5px;
+   }
+   .emptydata{
+    color:white;
+   }
+   .table {
+  width: 100%;
+}
+    </style>
+
+   </head>
+<br><br>
+<div class="container">
+    <h4 class="text-center">BLOODCAMP INFORMATION</h4><br>
+    {% if campdata %}
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr style="font-size: 12px";>
+                <th scope="col">CAMPNAME</th>
+                <th scope="col">CITY</th>
+                <th scope="col">ADDRESS</th>
+                <th scope="col">CONTACT</th>
+                <th scope="col">ORGANIZER_NAME</th>
+                 <th scope="col">STARTDATE</th>
+                 <th scope="col">ENDDATE</th>
+                
+                
+
+            </tr>
+        </thead>
+   
+        <tbody>
+          
+            {% for t in campdata %}
+                    <tr>
+                        
+                        
+                        
+                        <td> {{t.campname}}</td>
+                        <td>{{t.city}}</td>
+                        <td>{{t.address}}</td>
+                       
+                        <td>{{t.contact}}</td>
+                        
+                        <td>{{t.organizername}}</td>
+                        
+                        <td>{{t.startdate}}</td>
+                        <td >{{t.enddate}}</td>
+                        
+
+                        
+
+                        
+                        
+
+                    </tr>
+                
+
+                        
+            {% endfor %}
+           
+            
+            
+            {% endif %}
+
+
+        </tbody>
+    
+    </table>
+</div>
+
+
+{% endblock content %}
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+<script type="text/javascript">
+            window.setTimeout("alertMessage();", 1000);
+            function alertMessage(){
+            document.getElementById("alertmessage").style.display=" none";
+            }
+          </script>

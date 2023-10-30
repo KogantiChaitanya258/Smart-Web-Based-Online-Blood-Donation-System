@@ -1,0 +1,133 @@
+{% include 'myapp/base.html' %}
+{% block content %}
+
+{%load static%}
+<head>
+    <style>
+        .label {
+     color: white;
+     padding: 8px;
+   }
+   
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #2196F3;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+   .text-center{
+    color:white;
+    font-family:Garamond;
+
+   }
+   .container{
+    margin-left: -5px;
+   }
+   .emptydata{
+    color:white;
+   }
+   .table {
+  width: 100%;
+}
+    </style>
+
+   </head>
+<br><br>
+<div class="container">
+    <h4 class="text-center">DONOR INFORMATION</h4><br>
+    {% if donordata %}
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr style="font-size: 12px";>
+                <th scope="col">USERNAME</th>
+                <th scope="col">AGE</th>
+                <th scope="col">GENDER</th>
+                <th scope="col">CITY</th>
+                
+                <th scope="col">CONTACT</th>
+                
+                <th scope="col">BLOODGROUP</th>
+                
+                <th scope="col">ILLNESS(if any)</th>
+                <th scope="col" >LAST-DONATION , STATUS</th>
+                <th scope="col">SERVICE_TYPE</th>
+
+                 <th scope="col">SEND REQUEST</th>
+
+
+            </tr>
+        </thead>
+   
+        <tbody>
+          
+            {% for t in donordata %}
+                {% if t.username != userdata.username %}
+                    <tr>
+                        
+                        
+                        <td><a href="{% url 'donorprofile' t.username %}" data-toggle="tooltip" title="ViewProfile" style='color:#5876E1;'><b>{{t.username}}</b></a></td>
+                        <td> {{t.age}}</td>
+                        <td>{{t.gender}}</td>
+                        <td>{{t.city}}</td>
+                       
+                        <td>{{t.contact}}</td>
+                        
+                        <td>{{t.bloodgroup}}</td>
+                        
+                        <td>{{t.ill}}</td>
+                        <td > {{t.date}},{{t.lastdonation_eligibility}}</td>
+                        <td >{{t.servicetype}}</td>
+
+                        <td><button><a href="{% url 'addrequest' t.username t.donortype %}" onclick="return confirm('Are you sure to request this Donor?')"style='color:green'><b>Request Donor</b></a></button></td>
+
+                        
+                        
+
+                    </tr>
+                {% endif %}
+                {% if t.username != userdata.username %}
+                        <tr>
+                        
+                        
+                        <td><a href="{% url 'donorprofile' t.username %}" data-toggle="tooltip" title="ViewProfile" style='color:#5876E1;'><b>{{t.username}}</b></a></td>
+                        <td> {{t.age}}</td>
+                        <td>{{t.gender}}</td>
+                        <td>{{t.city}}</td>
+                       
+                        <td>{{t.contact}}</td>
+                        
+                        <td>{{t.bloodgroup}}</td>
+                        
+                        <td>{{t.ill}}</td>
+                        <td>{{t.date}},{{t.lastdonation_eligibility}} </td>
+                        <td >{{t.servicetype}}</td>
+
+                        <td><b style="color: green;">YOURSELF(Can't Request)</b></td>
+                    </tr>
+                {% endif %}
+
+                        
+            {% endfor %}
+           
+            
+            
+            {% endif %}
+
+
+        </tbody>
+    
+    </table>
+</div>
+
+
+{% endblock content %}
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+<script type="text/javascript">
+            window.setTimeout("alertMessage();", 1000);
+            function alertMessage(){
+            document.getElementById("alertmessage").style.display=" none";
+            }
+          </script>

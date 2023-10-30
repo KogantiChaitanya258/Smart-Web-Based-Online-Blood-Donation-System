@@ -1,0 +1,39 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body{
+      
+      background-size: cover;
+    
+    }
+    .menubar{
+      text-align: center;
+      border:1.5px solid white;
+
+    }
+    .menubar ul li {
+      list-style-type: none;
+      color: white;
+      display: inline-block;
+      padding: 10px;
+      font-size: 17px;
+      font-weight: bold;
+
+
+    }
+    
+    
+
+  </style>
+</head>
+<body background="{% static 'images/image3.jpg' %}">
+  
+  
+  {% include 'myapp/nav.html' %}
+  
+</body>
+</html>

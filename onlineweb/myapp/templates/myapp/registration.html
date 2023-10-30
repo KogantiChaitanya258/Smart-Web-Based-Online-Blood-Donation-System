@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+  
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  padding-top: 10px;
+
+  
+}
+.container center {
+  padding-top: 5px;
+  color:black;
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+
+  
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=email]{
+  padding: 8px;
+  margin: 5px 0 12px 0;
+  display: inline-block;
+  
+  
+}
+
+
+input[type=password], input[type=email],input[type=tel],input[type=text]{
+    color: white;
+    width: 50%; 
+    border:none;
+    border-bottom: 1px solid black;
+    background:transparent;
+    outline: none;
+    font-size: 20px;
+    }
+
+::placeholder {
+  color:black;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 15px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  
+  color: black;
+  padding: 10px 14px;
+  margin: 6px 0;
+  border-radius:5px;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 10%;
+}
+
+form{
+  padding-left: 12%;
+}
+form center{
+  padding-left:0%;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  text-align: center;
+}
+label{
+  font-weight: bold;
+}
+
+</style>
+</head>
+<body background="{% static 'images/image3.jpg' %}">
+{% block content %}
+{% include 'myapp/nav.html' %}
+
+<form method="post">
+  {% csrf_token %}
+  <div class="container">
+    {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
+
+    <center>REGISTRATION PAGE</center>
+    <label>RegistrationName</label><br>
+    <input type="text" name="Registeredname" placeholder="Enter username"><br>
+    <label>Email </label><br>
+    <input type="email" name="Email" placeholder="Enter email"><br>
+    <label>Set Password </label><br>
+    <input type="password" name="Password1" placeholder="Enter password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required ><br>
+    <label>Confirm Password </label><br>
+    <input type="password" name="Password2" placeholder="confirm password"><br>
+    <label>Mobile </label><br>
+    <input type="tel" name="Mobile" placeholder="Enter mobile number" pattern="^\d{10}$" title="mobile number shoul be of length 10 digits" required="required"><br><br><br>
+    <input type="checkbox" name="check" checked="checked"><label>Accept Terms&Conditions </label><br>
+    <input type="submit" name="Register" value="REGISTER" class="registerbtn">
+
+  </div>
+  
+  <div class="signin">
+    <p>Already have an account? <a href="{% url 'login' %}">Log-in</a></p>
+  </div>
+</form>
+
+</body>
+{% endblock %}
+</html>

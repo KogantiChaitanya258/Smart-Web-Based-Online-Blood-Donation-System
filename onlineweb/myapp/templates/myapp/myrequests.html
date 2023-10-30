@@ -1,0 +1,76 @@
+{% include 'myapp/base.html' %}
+{% block content %}
+
+{%load static%}
+<head>
+    <style>
+        
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #FA5723;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+   .text-center{
+    color:white;
+    font-family:Garamond;
+
+   }
+   .container{
+    margin-left: -5px;
+   }
+   .emptydata{
+    color:white;
+   }
+    </style>
+
+   </head>
+<br><br>
+<div class="container">
+    <h4 class="text-center">REQUESTS</h4><br>
+    
+            
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col" bgcolor="28BA86">YourName</th>
+                <th scope="col" bgcolor="#DA4D21">Donorname</th>
+                <th scope="col" bgcolor="#DA4D21">Asked_Service</th>
+                <th scope="col" bgcolor="#DA4D21">Delete_Request</th>
+                <th scope="col" bgcolor="#DA4D21">Status</th>
+            </tr>
+        </thead>
+        {% if requestdata %}
+            {% for t in requestdata %}
+        <tbody>
+          
+            <tr>
+                
+                <td> {{t.recievername}}</td>
+                <td><a href="{% url 'donorprofile' t.donorname %}" data-toggle="tooltip" title="ViewProfile" style='color:#5876E1;'><b>{{t.donorname}}</b></a></td>
+                <td>{{t.requiredservice}}</td>
+                <td><button><a href="{% url 'deletereq' t.donorname t.recievername t.requiredservice 'my' %}" onclick="return confirm('Are you sure to delete this request?')"style='color:orangered;'><b>Delete Request</b></a></button></td>
+               <td style="color:black;">{{t.status}}</td>
+                
+               
+            </tr>
+           
+
+            {% endfor %}
+            {% else %}
+            <tr class="emptydata">NO REQUEST AVALABLE!!</tr>
+            {% endif %}
+
+
+        </tbody>
+    
+    </table>
+</div>
+
+
+{% endblock content %}
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>

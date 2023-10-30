@@ -1,0 +1,141 @@
+{% include 'myapp/base.html' %}
+{% block content %}
+
+{%load static%}
+<head>
+    <style>
+        .label {
+     color: white;
+     padding: 8px;
+   }
+   
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #2196F3;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+   .text-center{
+    color:white;
+    font-family:Garamond;
+
+   }
+   .container{
+    margin-left: -5px;
+   }
+   .emptydata{
+    color:white;
+   }
+    </style>
+
+   </head>
+<br><br>
+<form method="POST" name="updateform">
+  {% csrf_token %}
+<div class="container">
+    <h4 class="text-center">UPDATE INFORMATION</h4><br>
+    <table class="table  table-light table-bordered table-striped">
+        
+        <tbody>
+          {% if udonordata %}
+          <tr>
+            <th class="bg-dark text-white">USERNAME :</th>
+            <td><input type="text" value={{udonordata.username}}  name="u_person_name"></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">AGE :</th>
+            <td><input type="text" value={{udonordata.age}} name="u_age" ></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">GENDER :</th>
+            <td>
+              <select name="u_gender"  id="radio">
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+                <option value="OTHER">OTHER</option>
+
+                <br>
+              </select>
+            </td>
+              
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">CITY :</th>
+            <td><input type="text" value={{udonordata.city}} name="u_city"></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">ADDRESS :</th>
+            <td><input type="text" value={{udonordata.address}} name="u_address"></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">CONTACT :</th>
+            <td><input type="tel" value={{udonordata.contact}} name="u_contact_number"></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">E-MAIL :</th>
+            <td><input type="email" value={{udonordata.email}} name="u_email" size="40"></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">BLOODGROUP :</th>
+            <td><select name="u_bloodgroup"  id="ud">
+                <option value="O Positive">O+</option>
+                <option value="O Negative">O-</option>
+                <option value="A Positive">A+</option>
+                <option value="A Negative">A-</option>
+                <option value="B Positive">B+</option>
+                <option value="B Negative">B-</option>
+                <option value="AB Positive">AB+</option>
+                <option value="AB Negative">AB-</option>
+              </select>
+          </td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">LASTDONATION DATE :</th>
+          <td>Last_donation :{{udonordata.date}}  Update_to : <input type="date" value={{udonordata.date}} name="u_last_donated_date" id="ldate" required>
+            
+         <!-- <td>
+            <input type="button" value="change" onclick="EnableDisable(this)" />-->
+          </td>  
+          </td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">ILLNESS :</th>
+            <td><input type="text" value={{udonordata.ill}} name="u_major_illness"></td>
+          </tr>
+            
+            {% else %}
+            <tr class="emptydata">OOPS!! NO INFORMATION AVALABLE FOR YOUR REQUEST!!</tr>
+            {% endif %}
+
+
+        </tbody>
+    
+    </table>
+    <button type="submit" class="btn  bg-dark text-white">UPDATE</button>&nbsp&nbsp&nbsp
+    <a href="{% url 'profile' %}" class="btn  bg-dark text-white">CANCEL</a>
+</div>
+</form>
+<script type="text/javascript">
+  document.getElementById("ud").value="{{udonordata.bloodgroup}}";
+  document.getElementById("radio").value="{{udonordata.gender}}";
+  /*document.getElementById("ldate").value="{{udonordata.date}}";
+  function EnableDisable(btnPassport) {
+        var txtPassportNumber = document.getElementById("ldate");
+        if (btnPassport.value == "change") {
+            txtPassportNumber.removeAttribute("disabled");
+            if( document.updateform.ldate.value == "" ) {
+            alert( "Please provide your last donation date!" );
+            document.updateform.ldate.focus() ;
+
+         }
+        } else {
+            document.getElementById("ldate").value="{{udonordata.date}}";
+        }
+    }*/
+    
+
+
+</script>
+
+
+{% endblock content %}
+

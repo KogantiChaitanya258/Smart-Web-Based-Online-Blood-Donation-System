@@ -1,0 +1,93 @@
+{% include 'myapp/base.html' %}
+{% block content %}
+
+{%load static%}
+<head>
+    <style>
+        .label {
+     color: white;
+     padding: 8px;
+   }
+   
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #2196F3;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+   .text-center{
+    color:white;
+    font-family:Garamond;
+
+   }
+   .container{
+    margin-left: -5px;
+   }
+   .emptydata{
+    color:white;
+   }
+    </style>
+
+   </head>
+<br><br>
+<div class="container">
+    <h4 class="text-center">PROFILE INFORMATION</h4><br>
+    
+
+    <table class="table  table-light table-bordered table-striped">
+        
+        <tbody>
+          {% if prodata %}
+          <tr>
+            <th class="bg-dark text-white">USERNAME :</th>
+            <td><strong>{{prodata.username}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">AGE :</th>
+            <td><strong>{{prodata.age}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">GENDER :</th>
+            <td><strong>{{prodata.gender}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">CITY :</th>
+            <td><strong>{{prodata.city}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">ADDRESS :</th>
+            <td><strong>{{prodata.address}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">CONTACT :</th>
+            <td><strong>{{prodata.contact}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">E-MAIL :</th>
+            <td><strong>{{prodata.email}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">BLOODGROUP :</th>
+            <td><strong>{{prodata.bloodgroup}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">LASTDONATION DATE :</th>
+            <td><strong>{{prodata.date}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">ILLNESS :</th>
+            <td><strong>{{prodata.ill}}</strong></td>
+          </tr>
+            
+            {% else %}
+            <tr class="emptydata">OOPS!! NO INFORMATION AVALABLE FOR YOUR REQUEST!!</tr>
+            {% endif %}
+
+
+        </tbody>
+    
+    </table>
+    <a href="{% url 'updatedonor' %}" class="btn  bg-dark text-white">UPDATE</a>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,94 @@
+{% include 'myapp/base.html' %}
+{% block content %}
+
+{%load static%}
+<head>
+    <style>
+        .label {
+     color: white;
+     padding: 8px;
+   }
+   
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #2196F3;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+   .text-center{
+    color:white;
+    font-family:Garamond;
+
+   }
+   .container{
+    margin-left: -5px;
+   }
+   .emptydata{
+    color:white;
+   }
+    </style>
+
+   </head>
+<br><br>
+<div class="container">
+    <h4 class="text-center">DONOR PROFILE INFORMATION</h4><br>
+    
+
+    <table class="table  table-light table-bordered table-striped">
+        
+        <tbody>
+          {% if donordata %}
+          <tr>
+            <th class="bg-dark text-white">USERNAME :</th>
+            <td><strong>{{donordata.username}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">AGE :</th>
+            <td><strong>{{donordata.age}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">GENDER :</th>
+            <td><strong>{{donordata.gender}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">CITY :</th>
+            <td><strong>{{donordata.city}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">ADDRESS :</th>
+            <td><strong>{{donordata.address}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">CONTACT :</th>
+            <td><strong>{{donordata.contact}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">E-MAIL :</th>
+            <td><strong>{{donordata.email}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">BLOODGROUP :</th>
+            <td><strong>{{donordata.bloodgroup}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">LASTDONATION DATE :</th>
+            <td><strong>{{donordata.date}}</strong></td>
+          </tr>
+          <tr>
+            <th class="bg-dark text-white">ILLNESS :</th>
+            <td><strong>{{donordata.ill}}</strong></td>
+          </tr>
+            
+            
+            {% endif %}
+
+
+        </tbody>
+    
+    </table>
+    
+</div>
+
+
+{% endblock content %}
+
+<

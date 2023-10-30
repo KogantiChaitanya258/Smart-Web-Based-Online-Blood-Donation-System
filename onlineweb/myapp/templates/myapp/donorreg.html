@@ -1,0 +1,140 @@
+
+{% include 'myapp/base.html' %}
+
+{% block content %}
+<head>
+ {% load static %}
+  <link rel='stylesheet' href="{% static 'css/donor.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style >
+  .container h1{
+    background:#E31919;
+    color:white;
+
+  }
+  .container{
+    background:#F8EAEA;
+  }
+  .heading{
+      
+      color: white;
+      font-family:Garamond;
+      padding: 10px;
+      font-size: 25px;
+
+    }
+</style>
+</head>
+
+  
+
+<form action="#" method="POST" id="donor">
+  {% csrf_token %}
+  <div class="container">
+    <h1 class="heading"><center>DONOR REGISTRATION</center></h1>
+    
+    <hr>
+
+    <label for="email"><b>User Name</b></label><br>
+    <input type="text" placeholder="Enter Username" name="person_name" required><br>
+
+    <label for="age"><b>Age</b></label><br>
+    <input type="text" placeholder="Enter Age" name="age" required id="age"><br>
+
+      <label for="Gender"><b>Gender</b></label><br>
+      <select name="sex" >
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+                <option value="OTHER">OTHER</option>
+
+                <br>
+      </select>
+
+ <br>
+<label ><b>City</label>
+  <br>
+<select name="city">
+  <option value="Vijayawada">Vijayawada</option>
+  <option value="Guntur">Guntur</option>
+  <option value="Nellore">Nellore</option>
+  <option value="Vizag">Vizag</option>
+  <option value="Kurnool">Kurnool</option>
+  <option value="Tirupathi">Tirupathi</option>
+</select>
+<br>
+
+ <label for="address"><b>Address</label><br>
+   <textarea type = "text" rows = "6" cols = "140" name = "address" style="background-color:#f1f1f1;">    </textarea><br><br>
+
+ 
+
+<label for="Contact Number"><b>Contact Number</label><br><br>
+<input type="number" size="" placeholder="Enter your contact number" name="contact_number"  required>
+<br><br>
+
+<label for="email"><b>Email</label><br><br>
+<input type="email" placeholder="Enter your email" name="email" maxlength="100" required>
+<br><br>
+<label ><b>Donation Type</label><br><br>
+<select name="donatetype"  id="dt" required>
+  <option value="Blood">Blood</option>
+  <option value="Plasma">Plasma</option>
+  <option value="Both">Both Blood&Plasma</option>
+</select><br><br>
+
+<label ><b>Service Type</label><br><br>
+<select name="servicetype"  id="dt" required>
+ 
+  <option value="FreeService">FreeService</option>
+   <option value="Paid">Paid</option>
+  
+</select><br><br>
+
+<label for="illness"><b>Blood Group</label><br><br>
+<select name="blood_group"  required>
+  <option value="O Positive">O+</option>
+  <option value="O Negative">O-</option>
+  <option value="A Positive">A+</option>
+  <option value="A Negative">A-</option>
+  <option value="B Positive">B+</option>
+  <option value="B Negative">B-</option>
+  <option value="AB Positive">AB+</option>
+  <option value="AB Negative">AB-</option>
+</select><br><br>
+
+<label for="date"><b>Last donated Date</label><br><br>
+<input type="date" name="last_donated_date" style="font-family: Arial, Helvetica, sans-serif; background-color:#f1f1f1;"
+width="100%" height="50px"><br><br>
+
+
+<label for="illness"><b>Major Illness, if any</label><br>
+<input type="text" placeholder="Enter major illness, if any mention 'illness name' or type 'no'" name="major_illness" required size="50">
+
+
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+<div class="eligible">
+<center>  <a href="#">Eligibility Criteria</a> for blood donation</center>
+</div>
+
+</form>
+
+<script type="text/javascript">
+    
+        
+
+         
+        
+
+
+
+</script>
+
+{% endblock content %}
+

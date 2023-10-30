@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	content="width-device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,
+	minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Accordion</title>
+	<!--Ion icons-->
+	<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'images/faq.css' %}">
+	</head>
+	<body>
+		{% include 'myapp/nav.html' %}
+		<section>
+			<div class="container">
+				<div class="accordion">
+					<div class="accordion-item" id="question1">
+						<a class="accordion-link" href="#question1">
+							Why should I donate blood?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Blood is the most precious gift that anyone can give to another person — the gift of life. A decision to donate your blood can save a life, or even several if your blood is separated into its components — red cells, platelets and plasma — which can be used individually for patients with specific conditions.
+							</p>
+						</div>
+					</div>
+
+					<div class="accordion-item" id="question2">
+						<a class="accordion-link" href="#question2">
+							How much blood will be taken? Will I have enough? 
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								In most countries, the volume of blood taken is 450 millilitres, less than 10% of your total blood volume (the average adult has 4.5 to 5 litres of blood). In some countries, a smaller volume is taken. Your body will replace the lost fluid within about 36 hour.
+							</p>
+						</div>
+					</div>
+
+					<div class="accordion-item" id="question3">
+						<a class="accordion-link" href="#question3">
+							Is giving blood safe?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Yes. Remember that you will only be accepted as a blood donor if you are fit and well. Your health and well-being are very important to the blood service. The needle and blood bag used to collect blood come in a sterile pack that cannot be reused, so the process is made as safe as possible.
+							</p>
+						</div>
+					</div>
+
+					<div class="accordion-item" id="question4">
+						<a class="accordion-link" href="#question4">
+							Does it hurt?
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								Just squeeze the inside of your elbow tightly and you will get a quick idea of what the needle feels like. All you should feel is a gentle pressure, but no pain. Blood donation is very safe and any discomfort or problem during or after donating is very uncommon.
+							</p>
+						</div>
+					</div>
+
+					<div class="accordion-item" id="question5">
+						<a class="accordion-link" href="#question5">
+							Who can give blood, and how often? 
+							<i class="icon ion-md-add"></i>
+							<i class="icon ion-md-remove"></i>
+						</a>
+						<div class="answer">
+							<p>
+								The criteria for donor selection may vary from country to country, but blood can be donated by most people who are healthy and do not have an infection that can be transmitted through their blood. The age at which people are eligible to give blood varies, but is commonly between the ages of 17 and 65. Some countries accept donations from people from the age of 16 and extend the upper age limit beyond 65 years. Healthy adults can give blood regularly—at least twice a year. Your local 
+								blood service can tell you how frequently you can give blood.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</body>
+	</html>

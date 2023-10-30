@@ -1,0 +1,41 @@
+{% include 'myapp/base.html' %}
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .heading1{
+      
+      color: white;
+      
+      padding: 10px;
+      font-size: 16px;
+
+    }
+    .chart2{
+        float: right;
+        
+    }
+    .chart1{
+        float:left;
+    }
+</style>
+</head>
+{% block content %}
+<div>
+    {% if chart1 %}
+    <b><h3 class="heading1" >DONORS vs BLOODGROUPS</h3></b>
+        <img src="data:image/png;base64, {{chart1|safe}}" class="chart1"><br>
+    {% if chart2 %}
+    <center><b><h3 class="heading1" >CITIES vs DONORS</h3></b></center>
+    <img src="data:image/png;base64, {{chart2|safe}}" class="chart2">
+    {% endif %}
+    {% endif %}
+    
+</div>
+    
+{% endblock content %}
